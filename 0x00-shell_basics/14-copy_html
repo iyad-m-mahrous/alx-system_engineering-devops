@@ -1,2 +1,2 @@
 #!/bin/bash
-cp -ru --no-clobber --exclude=* --include=*.html . ../
+rsync -u --exclude='*' --include='*.html' . ../

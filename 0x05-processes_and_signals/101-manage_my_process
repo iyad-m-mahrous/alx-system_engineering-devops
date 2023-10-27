@@ -20,7 +20,7 @@
 PID_FILE="/var/run/my_process.pid"
 
 start_process() {
-        manage_my_process &
+        './manage_my_process' &
         echo $! > "$PID_FILE"
         echo "manage_my_process started"
 }

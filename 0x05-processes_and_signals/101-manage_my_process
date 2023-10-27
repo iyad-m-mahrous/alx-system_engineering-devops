@@ -33,9 +33,14 @@ stop_process() {
 }
 
 restart_process() {
-    stop_process
-    start_process
-    echo "manage_my_process restarted"
+	if [ -f "$PID_FILE" ]
+	then
+		pid=$(cat "$PID_FILE")
+		kill "$pid"
+		rm -f "$PID_FILE"
+	fi
+	'./manage_my_process' &
+	echo "manage_my_process restarted"
 }
 
 # Main script

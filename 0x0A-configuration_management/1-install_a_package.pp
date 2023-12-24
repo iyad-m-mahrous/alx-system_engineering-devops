@@ -1,5 +1,15 @@
 # Install install flask from pip3
-python3::pip { 'Flask':
+class { 'python':
+  version => 'system',
+}
+
+package { 'python3-pip':
+  ensure => installed,
+  require => Class['python'],
+}
+
+python::pip { 'Flask':
   ensure   => '2.1.0',
-  provider => 'pip',
+  provider => 'pip3',
+  require  => Package['python3-pip'],
 }

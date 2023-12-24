@@ -13,3 +13,13 @@ python::pip { 'Flask':
   logoutput => true,
   require   => Package['python3-pip'],
 }
+
+python::pip { 'Werkzeug':
+  ensure    => '2.1.1',
+  provider  => 'pip3',
+  command   => '/usr/bin/pip3 install Werkzeug==2.1.1',
+  unless    => '/usr/bin/pip3 show Werkzeug | grep -q "Version: 2.1.1"',
+  path      => ['/usr/bin'],
+  logoutput => true,
+  require   => Package['python3-pip'],
+}
